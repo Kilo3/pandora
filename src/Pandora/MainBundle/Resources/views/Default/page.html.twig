@@ -37,9 +37,10 @@
         {% for value in menu %}
             <div class="menu-item">
                 <a class="link-to-page" href="/{{ value.url }}">{{ value.title }}</a>
-                {% if value.children is not null %}
+                
+                {% if value.children is not empty %}
                     <ul class="dropdown-menu">
-                        {% for valueInner in menu %}
+                        {% for valueInner in value.children %}
                             <li>
                                 <a href="/{{ value.url }}/{{ valueInner.url }}">{{ valueInner.title }}</a>
                             </li>
@@ -158,9 +159,9 @@ margin: 0 auto;"></div>
                                 {% for value in menu %}
                                     <li class="level1">
                                         <div><a href="/{{ value.url }}">{{ value.title }}</a></div>
-                                        {% if value.children is not null %}
+                                        {% if value.children is not empty %}
                                             <ul>
-                                                {% for valueInner in menu %}
+                                                {% for valueInner in value.children %}
                                                     <li>
                                                         <a href="/{{ value.url }}/{{ valueInner.url }}">{{ valueInner.title }}</a>
                                                     </li>
