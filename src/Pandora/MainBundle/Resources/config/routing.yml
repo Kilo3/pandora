@@ -1,0 +1,8 @@
+pandora_main:
+    pattern: /{url}
+    defaults: { _controller: PandoraMainBundle:Default:index }
+    requirements:
+        url: ".+"
+    
+        
+        

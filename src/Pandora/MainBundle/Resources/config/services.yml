@@ -1,0 +1,27 @@
+services:
+    pandora.admin.page:
+        class: Pandora\MainBundle\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: pandora, label: Page }
+        arguments:
+            - pandora.admin.page
+            - Pandora\MainBundle\Entity\Page
+            - 'PandoraMainBundle:PageAdmin'
+    pandora.admin.slider:
+        class: Pandora\MainBundle\Admin\SliderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: pandora, label: Slider }
+        arguments:
+            - pandora.admin.slider
+            - Pandora\MainBundle\Entity\Slider
+            - 'PandoraMainBundle:SliderAdmin'
+            
+#services:
+#    easy.admin.content:
+#        class: Easy\MainBundle\Admin\ContentAdmin
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, group: easy, label: Content }
+#        arguments:
+#            - easy.admin.content
+#            - Easy\MainBundle\Entity\Content
+#            - 'EasyMainBundle:ContentAdmin'

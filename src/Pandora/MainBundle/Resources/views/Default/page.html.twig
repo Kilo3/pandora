@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="description" content="" />
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="robots" content="noyaca"/>
+    <meta name="robots" content="noodp"/>
+    
+    <link href="{{ asset('bundles/pandoramain/css/jquery-ui-1.10.2.custom.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/normalize.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/toastr.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/toastr-responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/colorbox.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/style.css') }}" rel="stylesheet" />
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    
+</head>
+<body>
+    <div id="wrapper">
+        <header class="top">
+            <div class="w960" style="
+    display: table;
+">
+                <div class="logo" style="color:#fff;float: left;padding: 10px 0 0 25px;"><span>ЛОГОТИП</span></div>
+                <div style="
+    display: block;
+    float: right;
+    padding: 10px 25px 0 0;
+"><span style="color:#fff;">+7 (499) 225 33 10</span></div>
+            </div>
+<div class="top-menu">
+    <nav class="w1000">
+        {% for value in menu %}
+            <div class="menu-item">
+                <a class="link-to-page" href="/{{ value.url }}">{{ value.title }}</a>
+                {% if value.children is not null %}
+                    <ul class="dropdown-menu">
+                        {% for valueInner in menu %}
+                            <li>
+                                <a href="/{{ value.url }}/{{ valueInner.url }}">{{ valueInner.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        
+    </nav>
+</div>
+
+		</header>
+        
+        
+<div class="page-image" style="background:url({{ asset('bundles/pandoramain/images/bg.jpg') }}) center center no-repeat; background-size: cover;
+width: 1130px;
+margin: 0 auto;"></div>
+<div class="main w1000" role="main" style="margin-top: -54px;">
+    
+             <div class="left-column fl">
+                 <div class="top">
+                     <div>
+                            {% if page.parent is not null %}
+                                <a href="/{{page.parent.url}}">{{ page.parent.title}}</a>
+                            {% else %}
+                                {{ page.title }}
+                            {% endif %}
+                             
+                     </div>
+                 </div>
+<nav role="menu" class="page-menu">
+    <div class="padder">
+        {% if page.children[0] is defined %}
+            <ul>
+                {% for value in page.children %}
+                    <li role="menuitem" class="leftMenuItemClass">
+                        <a class="leftMenuLinkClass " href="/{{ page.url }}/{{ value.url }}">{{ value.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elseif page.parent.children[0] is defined %}
+            <ul>
+                {% for value in page.parent.children %}
+                    <li role="menuitem" class="leftMenuItemClass">
+                        <a class="leftMenuLinkClass " href="/{{ page.url }}/{{ value.url }}">{{ value.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</nav>
+           
+
+
+             </div>
+             <div class="right-column">
+
+
+
+
+
+
+{#<div class="breadcrumbs">
+    <div>
+        <a href="/">Главная</a>
+        <em class="arrow">→</em>
+            <a href="/services">Услуги</a>
+        <em class="arrow">→</em>
+            <a href="/services/engineers">Инженерные системы</a>
+        <em class="arrow">→</em>
+            <a href="/services/engineers/vodosnabzhenie-zagorodnogo-doma">Водоснабжение загородного&nbsp;дома</a>
+        <em class="arrow">→</em>
+            <span>Внутренняя сеть водоснабжения</span>
+            </div>
+</div>#}
+
+
+
+                 
+
+
+
+
+<div class="page-head">
+    <h1>{{ page.title }}</h1>
+</div>
+<div class="content">
+    {% autoescape false %}
+        {{ page.content }}
+    {% endautoescape %}
+</div>
+
+
+             </div>
+    
+</div>
+
+	</div>
+    
+	<footer class="footer">
+		<section class="search">
+			<div class="w960">
+				<div class="fl"><span class="icon-mobile">+7 (495) 660-88-68</span><span class="icon-mail">info@zag-dom.ru</span><span class="icon-address">Москва, ул. Шаболовка, д. 10</span></div>
+		
+			</div>
+		</section>
+		<section class="main">
+			<div class="w960">
+				<div class="fl">
+					<p>1996–2013 &copy; ООО «Загородный дом»<br />Все права защищены.</p>
+                                </div>
+			    <nav class="fr">
+                                <ul>
+                                {% for value in menu %}
+                                    <li class="level1">
+                                        <div><a href="/{{ value.url }}">{{ value.title }}</a></div>
+                                        {% if value.children is not null %}
+                                            <ul>
+                                                {% for valueInner in menu %}
+                                                    <li>
+                                                        <a href="/{{ value.url }}/{{ valueInner.url }}">{{ valueInner.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                                 
+			    </nav>
+			</div>
+		</section>
+	</footer>
+    
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    
+    
+    <script src="{{ asset('bundles/pandoramain/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.validate.unobtrusive.min.js') }}"></script>
+    
+    <script src="{{ asset('bundles/pandoramain/js/jquery.transit.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.mousewheel.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.colorbox-min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.cookie.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.pjax.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.scrollTo.min.js') }}"></script>
+    
+    <script src="{{ asset('bundles/pandoramain/js/js.js') }}"></script>
+    
+</body>
+</html>

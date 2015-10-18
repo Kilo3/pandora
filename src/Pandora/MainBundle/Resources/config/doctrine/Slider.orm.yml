@@ -1,0 +1,17 @@
+Pandora\MainBundle\Entity\Slider:
+    type: entity
+    table: slider
+    
+    fields:
+        id: 
+            id: true
+            type: bigint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        images:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Gallery
+            JoinColumn:
+                name: image
+                referencedColumnName: id

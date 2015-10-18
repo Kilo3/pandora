@@ -1,0 +1,40 @@
+Pandora\MainBundle\Entity\Page:
+    type: entity
+    table: page
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        url:
+            type: string
+            length: 255
+            nullable: true
+        title:
+            type: string
+            length: 255
+        order_column:
+            type: integer
+            nullable: false
+            default: 0
+        content:
+            type: text
+            nullable: true
+            required: false
+        seo_title:
+            type: text
+        seo_description:
+            type: text
+    oneToMany:
+        children:
+            targetEntity: Page
+            mappedBy: parent
+        
+    manyToOne:
+        parent:
+            targetEntity: Page
+            inversedBy: children
+            joinColumn:
+                name: parent
+                referencedColumnName: id
+        

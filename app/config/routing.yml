@@ -1,0 +1,22 @@
+pandora_main_homepage:
+    path: /
+    defaults: { _controller: PandoraMainBundle:Default:main }
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+ 
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+    
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    
+
+
+pandora_main:
+    resource: "@PandoraMainBundle/Resources/config/routing.yml"
+    prefix:   /

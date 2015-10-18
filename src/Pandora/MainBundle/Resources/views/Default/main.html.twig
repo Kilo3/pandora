@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="description" content="" />
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="robots" content="noyaca"/>
+    <meta name="robots" content="noodp"/>
+    
+    <link href="{{ asset('bundles/pandoramain/css/jquery-ui-1.10.2.custom.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/normalize.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/toastr.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/toastr-responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/colorbox.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/pandoramain/css/style.css') }}" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="{{ asset('bundles/pandoramain/css/font-awesome.min.css') }}" type="text/css" media="all" />
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    
+</head>
+<body>
+    <div id="wrapper">
+        <header class="top">
+            <div class="w960" style="
+    display: table;
+">
+                <div class="logo" style="color:#fff;float: left;padding: 10px 0 0 25px;"><span>ЛОГОТИП</span></div>
+                <div style="
+    display: block;
+    float: right;
+    padding: 10px 25px 0 0;
+"><span style="color:#fff;">+7 (499) 225 33 10</span></div>
+            </div>
+<div class="top-menu">
+    <nav class="w1000">
+        {% for value in menu %}
+            <div class="menu-item">
+                <a class="link-to-page" href="/{{ value.url }}">{{ value.title }}</a>
+                {% if value.children is not null %}
+                    <ul class="dropdown-menu">
+                        {% for valueInner in menu %}
+                            <li>
+                                <a href="/{{ value.url }}/{{ valueInner.url }}">{{ valueInner.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        
+    </nav>
+</div>
+
+
+
+{#<nav class="add-menu w1000">
+        <div class="menu-item">
+            <a class="link-to-page " href="/blocks">Кирпичные дома</a>
+            
+        </div>
+        <div class="menu-item">
+            <a class="link-to-page " href="/combined">Комбинированные дома</a>
+            
+        </div>
+        <div class="menu-item">
+            <a class="link-to-page " href="/services/engineers">Инженерные системы</a>
+                <ul class="dropdown-menu">
+            <li>
+                <a href="/services/engineers/ventilyaciya-zagorodnogo-doma">Вентиляция и кондиционирование</a>
+                
+            </li>
+            <li>
+                <a href="/services/engineers/elektrosnabzhenie-zagorodnogo-doma">Электроснабжение </a>
+                
+            </li>
+            <li>
+                <a href="/services/engineers/otoplenie-zagorodnogo-doma">Отопление загородного&#160;дома</a>
+                
+            </li>
+            <li>
+                <a href="/services/engineers/vodosnabzhenie-zagorodnogo-doma">Водоснабжение загородного&#160;дома</a>
+                
+            </li>
+            <li>
+                <a href="/services/engineers/kanalizaciya-zagorodnogo-doma">Канализация загородного&#160;дома</a>
+                
+            </li>
+            <li>
+                <a href="/services/engineers/products-catalog">Каталог оборудования</a>
+                
+            </li>
+    </ul>
+
+        </div>
+        <div class="menu-item">
+            <a class="link-to-page " href="/woods">Деревянные дома</a>
+                <ul class="dropdown-menu">
+            <li>
+                <a href="/woods/doma-iz-kleenogo-brusa">Дома из клееного бруса</a>
+                
+            </li>
+            <li>
+                <a href="/woods/doma-iz-ocilindrovannogo-brevna">Дома из оцилиндрованного бревна</a>
+                
+            </li>
+            <li>
+                <a href="/woods/doma-iz-brusa">Дома из бруса</a>
+                
+            </li>
+    </ul>
+
+        </div>
+        <div class="menu-item">
+            <a class="link-to-page " href="/foams">Дома из пеноблоков</a>
+            
+        </div>
+        <div class="menu-item">
+            <a class="link-to-page " href="/zagorodnye-doma-ekonom-klassa">Загородные дома эконом-класса</a>
+            
+        </div>
+</nav>#}
+
+
+
+		</header>
+        
+
+<div class='slides'>
+    {% if slider[0].images.GalleryHasMedias is defined %}
+        {% for image in slider[0].images.GalleryHasMedias %}
+            {% media image.media, 'big' with {'class': ''} %}
+        {% endfor %}
+    {% endif %}
+    <a href='#' class='slidesjs-previous slidesjs-navigation'><i class='fa fa-chevron-left'></i></a>
+    <a href='#' class='slidesjs-next slidesjs-navigation'><i class='fa fa-chevron-right'></i></a>
+</div>
+
+
+<div class="slide first">
+	<div class="w960">
+		<div class="welcome fl">
+			<h1>Проектирование и строительство загородных домов &#171;под ключ&#187;</h1>
+			<p>Компания &laquo;Загородный дом&raquo; основана 19 лет назад. Основное направление деятельности компании&nbsp;&mdash; строительство загородных домов и&nbsp;коттеджей.&nbsp;19 лет без &laquo;реорганизаций&raquo; и&nbsp;перерегистраций&nbsp;&mdash; большой срок. Главная причина стабильности компании состоит в&nbsp;том, что мы&nbsp;всегда стремимся к&nbsp;взаимопониманию с&nbsp;Заказчиком, не&nbsp;уклоняемся от&nbsp;исправления своих ошибок и&nbsp;стараемся сделать так, чтобы наша работа приносила радость людям.</p>
+<p>Наша задача&nbsp;&mdash; максимально упростить для заказчика процесс индивидуального строительства. Мы&nbsp;выполняем полный цикл работ по&nbsp;проектированию и&nbsp;строительству загородного дома, что позволяет заказчику иметь дело только с&nbsp;одним подрядчиком. Компания проектирует и&nbsp;строит деревянные дома, каменные дома из&nbsp;пеноблоков и&nbsp;кирпича, комбинированные дома. Сотрудники проектного отдела помогут спроектировать ваш дом, инженеры <nobr>проектно-сметного</nobr> отдела&nbsp;&mdash; выбрать материалы, специалисты по&nbsp;инженерным сетям оснастят его необходимым оборудованием, дизайнеры сделают <nobr>дизайн-проект</nobr> отделки. И&nbsp;все это будет воплощено в&nbsp;жизнь строительным отделом компании.</p>
+<p>Собственно, именно это и&nbsp;означает&nbsp;&mdash; строительство дома под ключ. Не&nbsp;нужно никаких дополнительных хлопот, нервотрепки, потерь времени, поиска строительных бригад и&nbsp;специализированных организаций; за&nbsp;все этапы строительства отвечает один подрядчик&nbsp;&mdash; компания &laquo;Загородный дом&raquo;. Проектирование и строительство домов под ключ с&nbsp;одним подрядчиком&nbsp;&mdash; это экономия сил, времени и&nbsp;денег.</p>
+
+		</div>
+		<div class="rewards fr">
+			<h2>Наши награды</h2>
+			<div class="thumbs">
+				<a class="colorbox" href="/Images/awards/европейское-качество.jpg"><img src="/Images/awards/award1.jpg" alt="Международная награда Европейское качество"></a>
+				<a class="colorbox" href="/Images/awards/5.jpg"><img src="/Images/awards/award2.jpg" alt="Статуэтка за европейское качество"></a>
+				<a class="colorbox" href="/Images/awards/звезда.jpg"><img src="/Images/awards/award3.jpg" alt="Почетная звезда Европейское качество"></a>
+			</div>
+            <p>О&nbsp;качестве строительства говорят наши награды. В&nbsp;2005 году компания &laquo;Загородный дом&raquo; стала лауреатом <nobr>смотра-конкурса</nobr> &laquo;Лучшие в&nbsp;Москве&raquo;, проводимого Российским и&nbsp;Московским фондами защиты прав потребителей.<br/>В&nbsp;2007 году Европейская Ассамблея Бизнеса (г.&nbsp;Оксфорд, Великобритания) удостоила компанию &laquo;Загородный дом&raquo; международной награды &laquo;Европейское качество&raquo; за&nbsp;стремление достичь высокого качества продукции и&nbsp;услуг в&nbsp;соответствии с&nbsp;европейскими стандартами.</p>
+            <p class="more-link"><a href="/about/nagrady">Перейти в раздел «Наши награды»</a></p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<div class="slide sage second">
+	<div class="w960">
+		<div class="what-we-do">
+			<h2 class="first">Какие дома мы строим:</h2>
+			<div class="classes">
+				<div class="item">
+					<figure><a href="/blocks"><img class="icon" src="Images/bricks.png" alt="кирпич"><img class="photo hidden" src="/Images/brick-icon.jpg" alt="Кирпичные дома"></a></figure>
+					<h3><a href="/blocks" class="hlink">Кирпичные дома</a></h3>
+					<p>Кирпич исключительно прочен. При проектировании и&nbsp;строительстве кирпичных домов, в&nbsp;отличие от&nbsp;домов из&nbsp;пенобетона и&nbsp;других пористых материалов, как правило, не&nbsp;возникает проблем с&nbsp;несущей способностью стен и&nbsp;равномерным распределением давления на&nbsp;стены.</p>
+				</div>
+				<div class="item">
+					<figure><a href="/combined"><img class="icon" src="Images/kombi.png" alt="кирпич и дерево"><img class="photo hidden" src="/Images/combined-icon.jpg" alt="Комбинированные дома"></a></figure>
+					<h3><a href="/combined">Комбинированные дома</a></h3>
+					<p>При строительстве комбинированного дома первый этаж возводится из&nbsp;камня, второй&nbsp;&mdash; из&nbsp;дерева. Такая конструкция позволяет в&nbsp;полной мере реализовать лучшие свойства этих строительных материалов и&nbsp;обойти их&nbsp;слабые стороны.</p>
+				</div>
+				<div class="item">
+					<figure><a href="/foams"><img class="icon" src="Images/peno.png" alt="пеноблок"><img class="photo hidden" src="/Images/penoblock-icon.jpg" alt="Дома из пеноблоков"></a></figure>
+					<h3><a href="/foams">Дома из пеноблоков</a></h3>
+					<p>Самые прочные строительные материалы&nbsp;&mdash; бетон и&nbsp;кирпич&nbsp;&mdash; обладают высокой теплопроводностью, то&nbsp;есть плохо сохраняют тепло. Напрашивается идея: наполнить эти плотные материалы пузырьками воздуха и&nbsp;из&nbsp;полученной массы формовать строительные блоки. Так появились пенобетонные и&nbsp;газосиликатные блоки. И&nbsp;те&nbsp;и&nbsp;другие часто называют пеноблоками.</p>
+				</div>
+				<div class="item">
+					<figure><a href="/woods"><img class="icon" src="Images/wood.png" alt="деревянная доска"><img class="photo hidden" src="/Images/wood-icon.jpg" alt="Деревянные дома"></a></figure>
+					<h3><a href="/woods">Деревянные дома</a></h3>
+					<p>Дерево как натуральный материал создает наиболее комфортные условия для жизни человека. Многие люди обращают внимание на&nbsp;то, что в&nbsp;деревянном доме нет ощущения сырости или застоявшегося воздуха. Это происходит потому, что дерево обладает хорошей паропроницаемостью и&nbsp;позволяет зданию &laquo;дышать&raquo;.</p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+{#
+<div class="slide third">
+	<div class="w960">
+		<div class="popular-projects">
+			<h2 class="first">Популярные проекты загородных домов</h2>
+		    <div class="thumbs">
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/marfino"><img alt="Марфино" src="/content/data/a5bd0bd3-f0c7-47d7-9d40-4658e4befab6_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/marfino">Марфино</a></div>
+            <div class="props">Общая площадь: 156,1 м²</div>
+            <div class="props">Размеры: 10,8х11,9 м</div>
+                <div class="props">Цена: 2&#160;228&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/melihovo"><img alt="Мелихово" src="/content/data/c67c9e81-5dda-400a-8f5b-ac191d031c72_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/melihovo">Мелихово</a></div>
+            <div class="props">Общая площадь: 122,3 м²</div>
+            <div class="props">Размеры: 8.9х9.6 м</div>
+                <div class="props">Цена: 1&#160;734&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-kombinirovannyh-domov/kombinirovannyj-dom-shale-3"><img alt="Комбинированный дом Шале 3" src="/content/data/7f91f75f-ebcb-4813-a496-3df93dcb56aa_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-kombinirovannyh-domov/kombinirovannyj-dom-shale-3">Комбинированный дом Шале 3</a></div>
+            <div class="props">Общая площадь: 149 м²</div>
+            <div class="props">Размеры: 10.2х9.6 м</div>
+                <div class="props">Цена: 1&#160;841&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/buzharovo-3"><img alt="Бужарово-3" src="/content/data/13aabdcb-16d1-4811-a471-543f33e4d02a_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/buzharovo-3">Бужарово-3</a></div>
+            <div class="props">Общая площадь: 167,1 м²</div>
+            <div class="props">Размеры: 13.3х9.9 м</div>
+                <div class="props">Цена: 2&#160;362&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/nahabino-penoblok"><img alt="Нахабино пеноблок" src="/content/data/9263ad4a-e24f-4040-8e67-1453b8b2657a_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/nahabino-penoblok">Нахабино пеноблок</a></div>
+            <div class="props">Общая площадь: 114,7 м²</div>
+            <div class="props">Размеры: 9.8х9.5 м</div>
+                <div class="props">Цена: 1&#160;870&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/nekrasovo-3"><img alt="Некрасово-3" src="/content/data/520b0014-51c8-420a-bf90-dd8d391003c2_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/nekrasovo-3">Некрасово-3</a></div>
+            <div class="props">Общая площадь: 163,3 м²</div>
+            <div class="props">Размеры: 12.2х9.6 м</div>
+                <div class="props">Цена: 2&#160;780&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/art-deko-3"><img alt="Арт-Деко-3" src="/content/data/6cbfd1f7-4f58-4b83-93ef-1ccd6bb12b76_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/art-deko-3">Арт-Деко-3</a></div>
+            <div class="props">Общая площадь: 277,4 м²</div>
+            <div class="props">Размеры: 17.0х24.0 м</div>
+                <div class="props">Цена: 3&#160;923&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/romantizm-2"><img alt="Романтизм-2" src="/content/data/82ee8126-c8de-4ba1-b4a1-0168897b1c76_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/romantizm-2">Романтизм-2</a></div>
+            <div class="props">Общая площадь: 203,4 м²</div>
+            <div class="props">Размеры: 13.8х9.9 м</div>
+                <div class="props">Цена: 2&#160;728&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/breton"><img alt="Бретон" src="/content/data/939eb38a-3139-455b-9fe4-0a3f446600d4_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/breton">Бретон</a></div>
+            <div class="props">Общая площадь: 337,5 м²</div>
+            <div class="props">Размеры: 17.9х13.1 м</div>
+                <div class="props">Цена: 4&#160;960&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/romantizm-3"><img alt="Романтизм-3" src="/content/data/516289c8-df2a-4a5b-b3f2-4b109ce622f3_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/romantizm-3">Романтизм-3</a></div>
+            <div class="props">Общая площадь: 299,8 м²</div>
+            <div class="props">Размеры: 14,6 х 17,3 м</div>
+                <div class="props">Цена: 4&#160;638&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/blocks-projects/proekt-minimalizm"><img alt="Минимализм" src="/content/data/4f5cb39d-1eaf-4a40-9d84-04d2173f2183_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/blocks-projects/proekt-minimalizm">Минимализм</a></div>
+            <div class="props">Общая площадь: 327,5 м²</div>
+            <div class="props">Размеры: 19,3 х 15,5 м</div>
+                <div class="props">Цена: 6&#160;803&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/woods-projects/doma-iz-brusa/anglijskij-dom"><img alt="Английский дом" src="/content/data/52500155-f6de-4659-9ebf-7600a9d68ef6_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/woods-projects/doma-iz-brusa/anglijskij-dom">Английский дом</a></div>
+            <div class="props">Общая площадь: 198,8 м²</div>
+            <div class="props">Размеры: 12,1х12,2 м</div>
+                <div class="props">Цена: 2&#160;892&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/woods-projects/doma-iz-brusa/normandskij"><img alt="Нормандский" src="/content/data/c44e58bc-6c25-40c7-abc1-3fec7df34222_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/woods-projects/doma-iz-brusa/normandskij">Нормандский</a></div>
+            <div class="props">Общая площадь: 206,1 м²</div>
+            <div class="props">Размеры: 12,5х11,8 м</div>
+                <div class="props">Цена: 2&#160;587&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/woods-projects/doma-iz-brusa/alpijskij"><img alt="Альпийский" src="/content/data/6dde76c2-738c-4411-bb95-062bebaba802_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/woods-projects/doma-iz-brusa/alpijskij">Альпийский</a></div>
+            <div class="props">Общая площадь: 168,4 м²</div>
+            <div class="props">Размеры: 10,4х11,5 м</div>
+                <div class="props">Цена: 1&#160;966&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/woods-projects/doma-iz-brusa/suomi"><img alt="Суоми" src="/content/data/2546263f-ac54-47b6-9121-884b63b8e3ed_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/woods-projects/doma-iz-brusa/suomi">Суоми</a></div>
+            <div class="props">Общая площадь: 198,6 м²</div>
+            <div class="props">Размеры: 13х12,9 м</div>
+                <div class="props">Цена: 2&#160;166&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/proekty-domov-iz-penoblokov/lion"><img alt="Лион" src="/content/data/3ff7f7b7-690e-45e6-ba2e-8a420c139036_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/proekty-domov-iz-penoblokov/lion">Лион</a></div>
+            <div class="props">Общая площадь: 150,6 м²</div>
+            <div class="props">Размеры: 11,1х12,2 м</div>
+                <div class="props">Цена: 2&#160;285&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/blocks-projects/romantizm-kirpich"><img alt="Романтизм кирпич" src="/content/data/42d000ed-fb0a-4138-8730-19706e611455_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/blocks-projects/romantizm-kirpich">Романтизм кирпич</a></div>
+            <div class="props">Общая площадь: 175,5 м²</div>
+            <div class="props">Размеры: 9.8х13.2 м</div>
+                <div class="props">Цена: 2&#160;970&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/blocks-projects/edinburg"><img alt="Эдинбург" src="/content/data/46ad5de4-e9cb-48f6-a2fe-8d7c38aefab0_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/blocks-projects/edinburg">Эдинбург</a></div>
+            <div class="props">Общая площадь: 193,7 м²</div>
+            <div class="props">Размеры: 10.9х14.4 м</div>
+                <div class="props">Цена: 3&#160;155&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/blocks-projects/boston"><img alt="Бостон" src="/content/data/8f877290-1d7c-4c42-a5ed-ddbd4a4f2228_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/blocks-projects/boston">Бостон</a></div>
+            <div class="props">Общая площадь: 192 м²</div>
+            <div class="props">Размеры: 15,4х11,1 м</div>
+                <div class="props">Цена: 3&#160;284&#160;000 руб.</div>
+        </div>
+    </div>
+    <div class="thumb">
+        <div class="fl">
+            <div class="i"><a href="/catalog/blocks-projects/art-deko-5"><img alt="Арт-Деко-5" src="/content/data/89f5d523-27ff-4c2d-ad77-c50b179a888b_f_cut_w208_h156.jpg" /></a></div>
+            <div class="link"><a href="/catalog/blocks-projects/art-deko-5">Арт-Деко-5</a></div>
+            <div class="props">Общая площадь: 322,7 м²</div>
+            <div class="props">Размеры: 18,3х22,4 м</div>
+                <div class="props">Цена: 5&#160;400&#160;000 руб.</div>
+        </div>
+    </div>
+
+		    </div>
+			<div class="see-all"><a href="/catalog">Все проекты домов</a></div>
+		</div>
+	</div>
+</div>
+
+<div class="four sage" id="four-block">
+	<div class="w920">
+		<h2>Этапы строительства загородного дома</h2>
+		<p>Процесс строительства загородного дома можно разделить на несколько этапов. Однако все они тесно связаны между собой, и на любом этапе нужно ясно представлять себе, что и&nbsp;как будет делаться на&nbsp;последующих. Поэтому строительство загородных домов и коттеджей &laquo;под ключ&raquo; должно идти строго по плану от начала и до конца.</p>
+	</div>
+</div>
+<div id="stages-container">
+    <div class="stage-numbers" id="stage-numbers">
+        <div class="item selected" data-elem="stage1"><span>1</span></div>
+        <div class="item" data-elem="stage2"><span>2</span></div>
+        <div class="item" data-elem="stage3"><span>3</span></div>
+        <div class="item" data-elem="stage4"><span>4</span></div>
+        <div class="item" data-elem="stage5"><span>5</span></div>
+    </div>
+    <div class="stage" id="stage1">
+        <div class="w920">
+            <figure><img src="/Images/stage1.jpg" alt="эскизный проект" ></figure>
+            <img src="/Images/stage1-left-icon.png" alt="фрагмент плана коттеджа" class="left">
+            <img src="/Images/stage1-right-icon.png" alt="фрагмент плана особняка" class="right">
+            <h3>Проектирование</h3>
+		    <p>Проектирование дома начинается с создания эскизного проекта.</p>
+            <p>В&nbsp;программе ArchiCad строится <nobr>3D-модель</nobr> будущего дома, которая позволяет еще до&nbsp;начала строительства увидеть на&nbsp;экране монитора, каким будет дом, и&nbsp;даже &laquo;походить&raquo; по&nbsp;нему. Эскизный проект загородного дома оформляется в&nbsp;виде альбома, который содержит планы, фасады, разрезы дома и&nbsp;его привязку к&nbsp;участку. Такой альбом необходим для получения разрешения на&nbsp;строительство в&nbsp;местной администрации.</p>
+            <p>Для того, чтобы приступить к строительству дома, эскизного проекта недостаточно, необходимо подробное описание всех деталей с&nbsp;указанием размеров и&nbsp;используемых материалов, а&nbsp;также расчет конструктивных элементов дома. Полная информация, необходимая для строительства, содержится в&nbsp;рабочем проекте дома. Важно, чтобы рабочий проект был сделан индивидуально и&nbsp;с&nbsp;учетом стоимости строительства, иначе в&nbsp;качестве, например, проекта фундамента Вы&nbsp;получите &laquo;типовой&raquo; фундамент, на&nbsp;котором можно построить десятиэтажный дом.</p>
+            <p>Архитектурная и&nbsp;конструктивная части проекта должны быть дополнены проектом инженерных систем и, желательно, <nobr>дизайн-проектом</nobr> отделки&nbsp;&mdash; только в&nbsp;этом случае удастся избежать нестыковок и&nbsp;переделок.</p>
+
+        </div>
+    </div>
+    <div class="stage" id="stage2">
+        <div class="w920">
+            <figure><img src="/Images/stage2.jpg" alt="проект коробки дома" ></figure>
+            <img src="/Images/stage2-left-icon.png" alt="фрагмент фундамента" class="left">
+            <img src="/Images/stage2-right-icon.png" alt="фрагмент стены" class="right">
+            <h3>Строительство «коробки» загородного дома</h3>
+		   <p>Возведение коробки дома включает в&nbsp;себя строительство фундамента, наружных и&nbsp;внутренних стен дома и&nbsp;подведение его под крышу. Ошибки, допущенные на&nbsp;этом этапе строительства исправлять сложно, дорого, а&nbsp;иногда&nbsp;&mdash; невозможно. Треснувшие стены, прогнувшиеся перекрытия, конденсат в&nbsp;утеплителе, отклеивающиеся обои&nbsp;&mdash; это лишь малая часть проблем, возникающих <nobr>из-за</nobr> легкомысленного отношения к&nbsp;этому этапу строительства.</p>
+            <p>Если к&nbsp;моменту возведения коробки дома у&nbsp;Вас еще нет проекта инженерных коммуникаций, то&nbsp;следует обсудить проект дома со&nbsp;специалистами по&nbsp;инженерным системам, чтобы предусмотреть все необходимые отверстия и&nbsp;каналы под трубы и&nbsp;кабели, вентиляционные каналы, расположение дымохода <nobr>и т. д.</nobr></p>
+        </div>
+    </div>
+    <div class="stage" id="stage3">
+        <div class="w920">
+            <figure><img src="/Images/stage3.jpg" alt="план дома в разрезе" ></figure>
+            <img src="/Images/stage3-left-icon.png" alt="фрагмент монтажа отопления" class="left">
+            <img src="/Images/stage3-right-icon.png" alt="фрагмент разводки отопительных труб" class="right">
+            <h3>Монтаж инженерных коммуникаций</h3>
+	        <p>Современный дом невозможно себе представить без системы отопления, водоснабжения и канализации, систем электроснабжения и слаботочных сетей, системы вентиляции и кондиционирования.</p>
+            <p>Инженерные системы внутри дома зависят от&nbsp;наличия наружных инженерных сетей. Особенно существенны наличие электричества и&nbsp;газа. Отопление дома при наличии газа обходится значительно дешевле, чем при использовании&nbsp;других видов топлива. Что&nbsp;же касается водоснабжения и&nbsp;канализации, отсутствие централизованных наружных сетей не&nbsp;является проблемой, их&nbsp;легко сделать автономными.</p>
+            <p>При проектировании инженерных систем не&nbsp;следует экономить на&nbsp;качестве материалов для разводки водяных и&nbsp;электрических сетей: на&nbsp;качестве труб, фитингов, кабелей, электроустановочных изделий. Экономия может оказаться небольшой, а&nbsp;последствия будут стоить немало нервов и&nbsp;денег.</p>
+
+        </div>
+    </div>
+    <div class="stage" id="stage4">
+        <div class="w920">
+            <figure><img src="/Images/stage4.jpg" alt="план дома в разрезе с элементами отделки" ></figure>
+            <img src="/Images/stage4-left-icon.png" alt="фрагмент с лестницей" class="left">
+            <img src="/Images/stage4-right-icon.png" alt="фрагмент с отделкой столовой" class="right">
+            <h3>Отделка загородного дома</h3>
+		    <p>Согласно современным нормам по теплоудержанию обойтись без утепления наружных стен можно только для <a href="/foams">домов из пеноблоков</a> (пенобетона и газосиликата) и поризованных керамических блоков. Деревянные и <a href="/blocks">кирпичные дома</a> требуют утепления. Поэтому наружная отделка современного дома очень часто связана с утеплением наружных стен. Наиболее распространенные и&nbsp;проверенные способы&nbsp;&mdash; это &laquo;вентилируемый фасад&raquo; и&nbsp;&laquo;мокрый фасад&raquo;. В&nbsp;первом случае отделочные материалы крепят к&nbsp;навесной конструкции фасада, во&nbsp;втором&nbsp;&mdash; утепленные стены штукатурят по&nbsp;утеплителю. Утепленные стены можно также обложить кирпичом.</p>
+            <p>К <a href="/services/otdelka-zagorodnogo-doma">внутренней отделке загородного дома</a> приступают после того, как закрыт тепловой контур и&nbsp;в&nbsp;доме установился стабильный <nobr>температурно-влажностный</nobr> режим.</p>
+            <p>Отделочные работы внутри дома часто переплетаются с&nbsp;работами по&nbsp;разводке инженерных коммуникаций. Поэтому удобно, когда эти этапы строительства выполняет одна и&nbsp;та&nbsp;же компания.</p>
+        </div>
+    </div>
+    <div class="stage" id="stage5">
+        <div class="w920">
+            <figure><img src="/Images/stage5.jpg" alt="готовый загородный дом"></figure>
+            <h3>Загородный дом под ключ готов!</h3>
+		    <p>Горожане задумываются о&nbsp;жизни за&nbsp;городом по&nbsp;разным причинам: <nobr>кто-то</nobr> движим желанием вырваться из&nbsp;городской суеты, <nobr>кому-то</nobr> хочется обустроить все по&nbsp;своему вкусу на&nbsp;своей земле. И&nbsp;когда на&nbsp;загородный дом есть деньги, остается вопрос: купить готовый или строить?<br />
+            Мы&nbsp;считаем, что загородный дом должен строиться индивидуально, так как он&nbsp;является отражением вкуса и&nbsp;стиля жизни хозяев. Коттеджные поселки, застроенные типовыми проектами, невзрачны и&nbsp;похожи на&nbsp;одинаковые кварталы многоквартирных домов. С&nbsp;другой стороны, строительство домов подразумевает массу хлопот, и&nbsp;каждый, кто хоть раз занимался индивидуальным строительством, знает, сколько усилий приходится приложить, прежде чем получишь желаемый результат.</p>
+            <p>И есть только один способ избежать нервотрепки, потерь времени и денег &mdash; поручить строительство индивидуального дома под ключ одному надежному подрядчику, готовому выполнить весь комплекс необходимых работ.</p>
+
+        </div>
+    </div>
+</div>
+<div class="five f-block" id="five-block">
+	<div class="w920">
+		<figure><img src="Images/control.jpg" alt="качество строительства"></figure>
+		<h2>Контроль качества на всех этапах</h2>
+		<p>На всех этапах строительства происходит постоянный контроль качества. В&nbsp;компании создана трехступенчатая система контроля качества: бригадир&nbsp;&mdash; прораб&nbsp;&mdash; инженер Службы контроля качества. Больше контроля&nbsp;&mdash; лучше результат: дом, в&nbsp;котором Вы&nbsp;будете жить.</p>
+	</div>
+</div>
+<div class="six f-block">
+	<div class="w920">
+		<figure><img src="Images/credit.jpg" alt="строительство в кредит или рассрочку"></figure>
+		<h2>Программа кредитования строительства</h2>
+		<p>Компания «Загородный дом» сотрудничает с АО "Кредит Европа Банк" в сфере <a href="/about/credits">кредитования строительства загородных домов</a>.  Кредит предоставляется АО «Кредит Европа Банк» (ОГРН  1037739326063,  Генеральная лицензия Банка России № 3311 от 04.02.2015 г.).</p>
+		<div class="credit"><img src="Images/banks1.jpg" alt="логотипы кредитующих банков-партнеров"></div>
+	</div>
+</div>
+<div class="seven">
+	<div class="w920"><noindex>
+		<div class="fl news">
+			<h3><a href="/about/news">Новости<br/>и события</a></h3>
+    <div class="date-item">
+        <time datetime="2015-05-20" class="date">20.05.2015</time>
+		<div class="text">
+			<p>С 1 июня 2015 года начнется подписание договоров на строительство домов по отложенной схеме.</p>
+...
+		</div>
+    </div>
+    <div class="date-item">
+        <time datetime="2015-01-12" class="date">12.01.2015</time>
+		<div class="text">
+			<p>Уважаемые посетители! Наш офис работает каждую субботу с 11 до 17 часов.</p>
+...
+		</div>
+    </div>
+
+		</div>
+		<div class="fl faq">
+		    <h3><a href="/faq">Вопросы<br/>и ответы</a></h3>
+    <div class="date-item">
+        <time datetime="2015-09-26" class="date">26.09.2015</time>
+        <div class="text">
+            Доброе утро.Можно узнать стоимость строительства под ключ дома "французский неоренессанс"?...
+        </div>
+        
+        <div class="more-link"><a href="/faq#q1182">прочитать ответ</a></div>
+    </div>
+    <div class="date-item">
+        <time datetime="2015-06-06" class="date">06.06.2015</time>
+        <div class="text">
+            Добрый день!
+Осуществляет ли ваша компания строительство дома по проекту заказчика?...
+        </div>
+        
+        <div class="more-link"><a href="/faq#q1164">прочитать ответ</a></div>
+    </div>
+
+		</div>
+		<div class="fl articles">
+			<h3><a href="/articles">Статьи<br/>о строительстве<br/>загородных домов</a></h3>
+    <div class="date-item">
+        <time datetime="2014-07-16" class="date">16.07.2014</time>
+        <h4 class="header"><a href="/articles/kirpich-ili-penoblok?category=pro-vybor-materialov-doma">Кирпич или пеноблок?</a></h4>
+        <div class="text">
+            <p>Кирпич &ndash; прочен и долговечен; газосиликатные и пенобетонные блоки (в обиходе &ndash; пеноблоки) обладают низкой теплопроводностью и, как прин...
+        </div>
+        
+    </div>
+
+		</div>
+		<div class="fl offer">
+		    <h3>Специальные<br/>предложения</h3>
+
+                <div class="date-item">
+                    <div class="text">
+                        
+                    </div>
+                    <div class="more-link"><a href="/about/special-offers">подробнее</a></div>
+                </div>
+		</div>
+	</noindex></div>
+</div>#}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&region=ru"></script>
+<script type="text/javascript">
+	/*<![CDATA[*/
+	var moscow = new google.maps.LatLng(55.752, 37.617);
+	function initialize() {
+	  var myOptions = {
+		zoom: 14,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		scrollwheel: false
+	  };
+	  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	  
+	  // Markers init
+	  var zagdomPos = new google.maps.LatLng(55.72352596245151, 37.61027812957764);
+	  var zagdomMarker = new google.maps.Marker({
+		position: zagdomPos,
+		map: map,
+		//icon : "/i/google-marker.png",
+		title:"ООО «Загородный дом»"
+	  });
+	  var zagdomString = '<div class="map_text"><p><strong>ООО «Загородный дом»</strong></p><p>119049, г. Москва, ул. Шаболовка, д 10</p><p><strong>Телефон: </strong>+7 (495) 660-88-68</p></div>';
+	  var zagdomInfowindow = new google.maps.InfoWindow({content: zagdomString});
+	  map.setCenter(zagdomPos);
+	  window.onresize = function(){ map.setCenter(moscow); }
+	  google.maps.event.addListener(zagdomMarker, 'click', function() {	zagdomInfowindow.open(map,zagdomMarker);	});
+	  
+	}
+	window.onload = function(){ initialize(); }
+	
+	/*]]>*/
+</script>
+<div id="map_canvas" style="height:300px;"></div>
+
+		
+	</div>
+	<footer class="footer">
+		<section class="search">
+			<div class="w960">
+				<div class="fl"><span class="icon-mobile">+7 (495) 660-88-68</span><span class="icon-mail">info@zag-dom.ru</span><span class="icon-address">Москва, ул. Шаболовка, д. 10</span></div>
+		
+			</div>
+		</section>
+		<section class="main">
+			<div class="w960">
+				<div class="fl">
+					<p>1996–2013 &copy; ООО «Загородный дом»<br />Все права защищены.</p>
+                                </div>
+			    <nav class="fr">
+                                <ul>
+                                {% for value in menu %}
+                                    <li class="level1">
+                                        <div><a href="/{{ value.url }}">{{ value.title }}</a></div>
+                                        {% if value.children is not null %}
+                                            <ul>
+                                                {% for valueInner in menu %}
+                                                    <li>
+                                                        <a href="/{{ value.url }}/{{ valueInner.url }}">{{ valueInner.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                                 
+			    </nav>
+			</div>
+		</section>
+	</footer>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    
+    
+    <script src="{{ asset('bundles/pandoramain/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.validate.unobtrusive.min.js') }}"></script>
+    
+    <script src="{{ asset('bundles/pandoramain/js/jquery.transit.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.mousewheel.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.colorbox-min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.cookie.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.pjax.min.js') }}"></script>
+    <script src="{{ asset('bundles/pandoramain/js/jquery.scrollTo.min.js') }}"></script>
+    
+    <script src="{{ asset('bundles/pandoramain/js/jquery.slides.min.js') }}"></script>
+    
+    <script src="{{ asset('bundles/pandoramain/js/js.js') }}"></script>
+    <script>
+        $('.slides').slidesjs({
+            width: 1280,
+            navigation: false,
+            pagination: false,
+            play:{
+                auto: false,
+                interval: 5000
+            },
+            pauseOnHover: true
+          });
+    </script>
+    
+</body>
+</html>
