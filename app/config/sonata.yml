@@ -52,7 +52,7 @@ sonata_formatter:
             upload: 'SonataFormatterBundle:Ckeditor:upload.html.twig'
 
 sonata_admin:
-    title: Easy Admin
+    title: Пандора-сиб
 #    templates:
         # default global templates
 #        layout:  SonataAdminBundle::layout.html.twig

@@ -2,7 +2,7 @@ services:
     pandora.admin.page:
         class: Pandora\MainBundle\Admin\PageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: pandora, label: Page }
+            - { name: sonata.admin, manager_type: orm, group: Настройки, label: Страницы сайта }
         arguments:
             - pandora.admin.page
             - Pandora\MainBundle\Entity\Page
@@ -10,7 +10,7 @@ services:
     pandora.admin.slider:
         class: Pandora\MainBundle\Admin\SliderAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: pandora, label: Slider }
+            - { name: sonata.admin, manager_type: orm, group: Настройки, label: Слайдер }
         arguments:
             - pandora.admin.slider
             - Pandora\MainBundle\Entity\Slider
