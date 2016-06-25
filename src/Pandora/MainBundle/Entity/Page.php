@@ -79,7 +79,7 @@ class Page
      */
     public function setUrl($url)
     {
-        $this->url = str_replace(' ', '%20', $url);
+        $this->url = str_replace(' ', '_', $url);
 
         return $this;
     }
@@ -91,7 +91,7 @@ class Page
      */
     public function getUrl()
     {
-        return $this->url = str_replace('%20', ' ', $this->url);
+        return $this->url;
     }
 
     /**
